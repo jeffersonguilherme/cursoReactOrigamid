@@ -1,28 +1,47 @@
 import React from 'react';
 
 const App = () => {
+//const produtos = ["notebook ",'tablet ', ' smartphone'];
+//const empresas = [<li key="e1">Apple</li>, <li key="e2">Google</li>];
+//return <div>{produtos}</div>
+//return <ul>{empresas}</ul>
+/*
+const filmes = [ 'interestelar', 'vingadores', 'Homem-aranha']
 
-  //const produtos = [<li key="e1">Notebook</li>, <li key="e2">Celular</li>];
-  //const filmes = ['Before Sunrise', 'Before sunset', 'before Midnight']
-  //      <ul>{filmes.map((filme) => (<li key={filme}>{filme}</li>))}</ul>
+return (
+  <ul>
+    {filmes.map((filme) =>(
+      <li key='{filme}'>{filme}</li>
+    ))}
+  </ul>
+)
+   nome: {livro.nome}, ano de lançamento: {livro.ano}, nota: {livro.nota}
+  */
 
-  const livros = [
-    {nome: 'A game of thrones', ano: 1996},
-    {nome: 'A clash of kigns', ano: 1998},
-    {nome: 'A storm of swords', ano: 2000},
+const livros = [
+  { nome: 'A Game of Thrones', ano: 1996, nota: 9},
+  { nome: 'A Clash of Kings', ano: 1998, nota: 9.5},
+  { nome: 'A Game of Thrones', ano: 2000, nota: 9.3},
+];
 
-  ]
+const anoFiltro = 1997;
+return (
+  <ul>
 
-  return (
+    {livros
+    .filter((livro) => livro.ano >= anoFiltro)
+    .map((livro) =>(
+      <li key={livro.nome}> 
+        Nome: {livro.nome}
         <ul>
-          {livros.filter(({ano}) => ano >=1998)
-          .map(({nome, ano}) => (
-            <li key={nome}>
-              {nome}, {ano}
-            </li>
-          ))}
+          <li>Ano: {livro.ano}</li>
+          <li>Nota: {livro.nota}</li>
         </ul>
-     );
-};
+      </li>
+    ))}
 
+  </ul>
+)
+
+};
 export default App;

@@ -4,45 +4,39 @@ const produtos = [
   {
     id: 1,
     nome: 'Smartphone',
-    precoDe: 'R$ 3000',
-    precoPor: 'R$ 2000',
-
+    preco: 'R$ 2000',
+    cores: ['#29d8d5', '#252a34', '#fc3766'],
   },
   {
     id: 2,
-    nome: 'Cadeira',
-    precoDe: 'R$ 110',
-    precoPor: 'R$ 2000',
-
-  },
- {
-    id: 3,
-    nome: 'Máquina de Lavar',
-    precoDe: 'R$ 2520',
-    precoPor: 'R$ 1424',
-
+    nome: 'Notebook',
+    preco: 'R$ 3000',
+    cores: ['#ffd045', '#d4394b', '#f37c59'],
   },
   {
-    id: 4,
-    nome: 'Smart TV',
-    precoDe: 'R$ 5400',
-    precoPor: 'R$ 3134',
-
+    id: 3,
+    nome: 'Tablet',
+    preco: 'R$ 1500',
+    cores: ['#365069', '#47c1c8', '#f95786'],
   },
-  
-  
-];
+]
 
 const App = () => {
   return (
-    <section className=''>
-      {produtos.map(({id, nome, precoDe, precoPor}) => (
-        <div className="card" key={id}>
-            <h2>{nome}</h2>
-            <p>{precoDe}</p>
-            <h3>{precoPor}</h3>
+    <section>
+      {produtos.filter((produto)=> Number(produto.preco.replace('R$', '')) > 1500)
+      .map((produto)=>(
+        <div key={produto.id}>
+          <h1>{produto.nome}</h1>
+          <p>Preço: {produto.preco}</p>
+          <ul>
+            {produto.cores.map((cor) =>(
+              <li key={cor} style={{backgroundColor: cor, color:'white'}}>{cor}</li>
+            ))}
+          </ul>
         </div>
-      ))}
+      ))
+      }
     </section>
   )
 }
